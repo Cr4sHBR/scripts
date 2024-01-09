@@ -1,5 +1,11 @@
-#!/bin/sh
-set -e
-HOSTINFO=$(/usr/bin/lsb_release -a 2>&1 | grep Description | /usr/bin/cut -d ":" -f2 | /usr/bin/tr -d [:blank:])
-IPADDRS=$(/usr/sbin/ip a)
-/usr/bin/echo -ne "Host OS: $HOSTINFO\n$IPADDRS\n" > /etc/issue
+#!/bin/bash
+
+# Obtém o endereço IP da interface eth0
+ip_address=$(ifconfig eth0 | awk '/inet / {print $2}')
+
+# Verifica se o endereço IP foi encontrado
+if [ -z "$ip_address" ]; then
+    echo "Não foi possível obter o endereço IP da interface eth0."
+else
+    echo "Endereço IP da interface eth0: $ip_address"
+fi
